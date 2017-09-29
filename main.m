@@ -4,9 +4,9 @@
 %dims = inputdlg (prompt, "Enter Box Dimensions", rowscols, defaults);
 %volume  = str2num (dims{1}) * str2num (dims{2}) * str2num (dims{3});
 
-%[data] = readData();
-[menu] = menuPrincipal();
-%[MatrizDeDatos] = crearMatrizDeDatos(data);
-%[result] = MultiplicarMatrices(MatrizDeDatos);
+[data] = readData();
+%[funcion] = menuPrincipal();
+[MatrizDeDatos] = crearMatrizDeDatos(data);
+[result] = MultiplicarMatrices(MatrizDeDatos);
 %[result] = genTuple(datos); # aplica en la matriz
 printf("\n\nPrograma finalizado\n\n");
