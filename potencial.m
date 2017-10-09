@@ -20,4 +20,19 @@ X = linsolve(A, B);
 %Cambio de variables
 b=exp(X(2));
 a=X(1);
-disp(['y =' num2str(b) ' + x^' num2str(a)]);
+disp(['y =' num2str(b) ' * x^' num2str(a)]);
+
+%grafico
+  %Genero un vector que todos los valores f(x) de la funcion
+  for i = 1:maxX
+  vecRes(i) = (i.^a)*b;
+endfor
+ %Grafico el vector
+  plot(vecRes)
+  
+hold on
+%Grafico la nube de puntos
+for i = 1:n
+  filaI=matriz(i,:);
+  plot(filaI(1),filaI(2));
+  endfor

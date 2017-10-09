@@ -20,16 +20,18 @@ X = linsolve(A, B);
 valA=X(1);
 valB=X(2);
 disp(['y =' num2str(valB) ' + x' num2str(valA)]);
-%Asigno 2 valores en funcion de mi funcion para graficar
-val1=(1*valA)+valB;
-val2=(1*valA)+valB;
-matGraf=[val1;val2];
+
 %grafico
-plot(matGraf)
+  %Genero un vector que todos los valores f(x) de la funcion
+  for i = 1:maxX
+  vecRes(i) = (i*valA)+valB;
+endfor
+ %Grafico el vector
+  plot(vecRes)
+  
 hold on
 %Grafico la nube de puntos
 for i = 1:n
   filaI=matriz(i,:);
   plot(filaI(1),filaI(2));
   endfor
-  
