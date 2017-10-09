@@ -9,7 +9,7 @@
   n=length(colX);
   sumX=sum(colX);
   sumY=sum(colY);
-  x2=filaX.^2;
+  x2=colX.^2;
   sumX2=sum(x2);
   XY=colX.*colY;
   sumXY=sum(XY);
@@ -19,6 +19,7 @@ B = [sumY; sumXY];
 X = linsolve(A, B);
 valA=X(1);
 valB=X(2);
+disp(['y =' num2str(valB) ' + x' num2str(valA)]);
 %Asigno 2 valores en funcion de mi funcion para graficar
 val1=(1*valA)+valB;
 val2=(1*valA)+valB;
