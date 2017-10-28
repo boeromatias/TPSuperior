@@ -35,3 +35,7 @@ for i = 1:n
   filaI=matriz(i,:);
   plot(filaI(1),filaI(2));
   endfor
+ 
+ %Error generado
+ pX=colX.*valA .+ valB;
+ EREcta=sum((colY.-pX).^2)
