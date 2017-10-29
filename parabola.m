@@ -24,3 +24,28 @@
   B = [sumColY; sumColXY; sumColX2Y];
   X = linsolve(A, B);
   
+valA=X(1);
+valB=X(2);
+valC=X(3);
+disp(['+ y =' num2str(valA) 'x^2 + x' num2str(valB) '+' num2str(valC)])
+
+
+%grafico
+  %Genero un vector que todos los valores f(x) de la funcion
+  for i = 1:maxX
+  vecRes(i) = ((i^2)*valA)+(i*valB)+valC;
+endfor
+ %Grafico el vector
+  plot(vecRes)
+  
+hold on
+%Grafico la nube de puntos
+for i = 1:n
+  filaI=matriz(i,:);
+  plot(filaI(1),filaI(2));
+  endfor
+ 
+ %Error generado
+ pX=((colX.^2).*valA) .+ (colX.*valB) + valC;
+ EPar=sum((colY.-pX).^2)
+

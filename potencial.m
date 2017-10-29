@@ -38,4 +38,4 @@ for i = 1:n
   endfor
 %Error generado
  pX=(colX.^valA).* valB;
- EREcta=sum((colY.-pX).^2)
+ EPot=sum((colY.-pX).^2)
