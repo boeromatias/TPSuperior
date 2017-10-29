@@ -1,6 +1,5 @@
-function [ans] = hiperbola ()
-  printf("\n\nHa seleccionado la aproximacion por Hyperbola\n\n");
-
+function [ans] = exponencial ()
+  printf("\n\nHa seleccionado la aproximacion por exponencial\n\n");
 %Guardo el archivo en Matriz
   matriz = load('c:\\temp\\amic\\data.txt');
 %Extraigo las columnas
@@ -10,29 +9,24 @@ function [ans] = hiperbola ()
   maxX=max(colX);
 %Saco las variables de mis funciones  
   n=length(colX);
-  sumHipX=sum(1./colX);
-  sumHipY=sum(1./colY);
-  HipX2=(1./colX).^2;
-  sumHipX2=sum(HipX2);
-  HipXY=(1./colX).*(1./colY);
-  sumHipXY=sum(HipXY);
+  sumX=sum(colX);
+  sumY=sum(colY);
+  x2=colX.^2;
+  sumX2=sum(x2);
+  XY=colX.*colY;
+  sumXY=sum(XY);
 %Resuelvo el sistema de ecuaciones 
-A = [sumHipX n;sumHipX2 sumHipX];
-B = [sumHipY; sumHipXY];
+A = [sumX n;sumX2 sumX];
+B = [sumY; sumXY];
 X = linsolve(A, B);
-%Cambio de variables
-a=1./X(2);
-b=a.*X(1);
-%a=X(2)./X(1);
-%b=1./X(1);
-disp(['y =(' num2str(a) ' * x)/(x+' num2str(b) ')'])
-%disp(['y =(' num2str(a) ' / x) +' num2str(b) ''])
+valA=X(1);
+valB=X(2);
+disp(['y =' num2str(valB) ' + x' num2str(valA)]);
 
 %grafico
   %Genero un vector que todos los valores f(x) de la funcion
   for i = 1:maxX
-  vecRes(i) = (i*a)/(b+i);
-  %vecRes(i) = b+(a/i);
+  vecRes(i) = (i*valA)+valB;
 endfor
  %Grafico el vector
   plot(vecRes)
@@ -43,11 +37,10 @@ for i = 1:n
   filaI=matriz(i,:);
   plot(filaI(1),filaI(2));
   endfor
-  
-%Error generado
- %pX=(valA./colX) .+ valB;
- pX=(valA.*colX)./(colX+ valB);
+ 
+ %Error generado
+ pX=colX.*valA .+ valB;
  printf("\n\nEl error hayado es el siguiente:\n\n");
  Error=sum((colY.-pX).^2)
  ans=sum((colY.-pX).^2);
- endfunction
+endfunction

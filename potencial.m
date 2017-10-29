@@ -1,3 +1,6 @@
+function [ans] = potencial ()
+  printf("\n\nHa seleccionado la aproximacion por potencial\n\n");
+
 %Guardo el archivo en Matriz
   matriz = load('c:\\temp\\amic\\data.txt');
 %Extraigo las columnas
@@ -38,4 +41,7 @@ for i = 1:n
   endfor
 %Error generado
  pX=(colX.^valA).* valB;
- EPot=sum((colY.-pX).^2)
+  printf("\n\nEl error hayado es el siguiente:\n\n");
+ Error=sum((colY.-pX).^2)
+ ans=sum((colY.-pX).^2);
+ endfunction
