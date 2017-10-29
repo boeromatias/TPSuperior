@@ -46,7 +46,7 @@ for i = 1:n
   
 %Error generado
  %pX=(valA./colX) .+ valB;
- pX=(valA.*colX)./(colX+ valB);
+ pX=(a.*colX)./(colX+ b);
  printf("\n\nEl error hayado es el siguiente:\n\n");
  Error=sum((colY.-pX).^2)
  ans=sum((colY.-pX).^2);

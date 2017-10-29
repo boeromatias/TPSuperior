@@ -40,7 +40,7 @@ for i = 1:n
   plot(filaI(1),filaI(2));
   endfor
 %Error generado
- pX=(colX.^valA).* valB;
+ pX=(colX.^a).* b;
   printf("\n\nEl error hayado es el siguiente:\n\n");
  Error=sum((colY.-pX).^2)
  ans=sum((colY.-pX).^2);

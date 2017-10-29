@@ -10,23 +10,24 @@ function [ans] = exponencial ()
 %Saco las variables de mis funciones  
   n=length(colX);
   sumX=sum(colX);
-  sumY=sum(colY);
-  x2=colX.^2;
-  sumX2=sum(x2);
-  XY=colX.*colY;
-  sumXY=sum(XY);
+  sumLnY=sum(log(colY));
+  X2=colX.^2;
+  sumX2=sum(X2);
+  LnXY=colX.*log(colY);
+  sumLnXY=sum(LnXY);
 %Resuelvo el sistema de ecuaciones 
 A = [sumX n;sumX2 sumX];
-B = [sumY; sumXY];
+B = [sumLnY; sumLnXY];
 X = linsolve(A, B);
-valA=X(1);
-valB=X(2);
-disp(['y =' num2str(valB) ' + x' num2str(valA)]);
+%Cambio de variables
+b=exp(X(2));
+a=X(1);
+disp(['y =' num2str(b) ' * e^' num2str(a)]);
 
 %grafico
   %Genero un vector que todos los valores f(x) de la funcion
   for i = 1:maxX
-  vecRes(i) = (i*valA)+valB;
+  vecRes(i) = (exp(a*i))*b;
 endfor
  %Grafico el vector
   plot(vecRes)
@@ -39,7 +40,7 @@ for i = 1:n
   endfor
  
  %Error generado
- pX=colX.*valA .+ valB;
+ pX=(exp(colX.*a)) .+ b;
  printf("\n\nEl error hayado es el siguiente:\n\n");
  Error=sum((colY.-pX).^2)
  ans=sum((colY.-pX).^2);
