@@ -7,11 +7,11 @@
 %[data] = readData();
 
 %Inicializo Errores%
-EREcta=0;
-EPar=0;
-EExp=0;
-EPot=0;
-EHyp=0;
+EREcta=-1;
+EPar=-1;
+EExp=-1;
+EPot=-1;
+EHyp=-1;
 
 [funcion] = menuPrincipal();
 while (funcion != 0)
@@ -33,10 +33,20 @@ endif
 
 [funcion] = menuPrincipal();
 endwhile
-ans = input ("Desea comparar los resultados?", "s");
-if ((ans == "Si") | (ans == "si"))
-    tabla=["Error Recta: ", num2str(EREcta);"Error Parabola: ", num2str(EPar);"Error Exponencial: ", num2str(EExp);"Error Potencial: ",num2str(EPot);"Error Hiperbola: ", num2str(EHyp)]
-else
-printf("Chupala");
+[ElMejor] = comparacion(EREcta, EPar, EExp, EPot, EHyp);
+
+if (ElMejor = EREcta)
+    Aprox = "Recta";
+elseif (ElMejor = EPar)
+    Aprox = "Parabola";
+elseif (ElMejor = EPot)
+    Aprox = "Potencial";
+elseif (ElMejor = EExp)
+    Aprox = "Exponencial";
+elseif (ElMejor = EHyp)
+    Aprox = "Hyperbola";
 endif
+
+printf("\n\nLa mejor aproximacion es por:\n\n");
+Aprox
 printf("\n\nPrograma finalizado\n\n");
