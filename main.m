@@ -1,3 +1,4 @@
+#!/usr/bin/octave -q 
 %prompt = {"Width", "Height", "Depth"};
 %defaults = {"1.10", "2.10", "3.10"};
 %rowscols = [1,5; 1,5; 1,5];
@@ -13,40 +14,53 @@ EExp=-1;
 EPot=-1;
 EHyp=-1;
 
+
+[data] = inputData();
+
 [funcion] = menuPrincipal();
+msgbox("Presione enter en caso que desee finalizar");
 while (funcion != 0)
   
-if (funcion == "A")
-    [EREcta] = RectaMinCua();
-elseif (funcion == "B")
-    [EPar] = parabola();
-elseif (funcion == "C")
-    [EExp] = exponencial();
-elseif (funcion == "D")
-    [EPot] = potencial();
-elseif (funcion == "E")
-    [EHyp] = hiperbola();
+if (funcion == "A" || funcion == "a")
+    EREcta = RectaMinCua(data);
+elseif (funcion == "B" || funcion == "b")
+    [EPar] = parabola(data);
+elseif (funcion == "C" || funcion == "c")
+    [EExp] = exponencial(data);
+elseif (funcion == "D" || funcion == "d")
+    [EPot] = potencial(data);
+elseif (funcion == "E" || funcion == "e")
+    [EHyp] = hiperbola(data);
 endif
-%[MatrizDeDatos] = crearMatrizDeDatos(data);
-%[result] = MultiplicarMatrices(MatrizDeDatos);
-%[result] = genTuple(datos); # aplica en la matriz
+
+
 
 [funcion] = menuPrincipal();
 endwhile
 [ElMejor] = comparacion(EREcta, EPar, EExp, EPot, EHyp);
 
-if (ElMejor = EREcta)
+
+
+if (ElMejor == EREcta)
     Aprox = "Recta";
-elseif (ElMejor = EPar)
+elseif (ElMejor == EPar)
     Aprox = "Parabola";
-elseif (ElMejor = EPot)
+elseif (ElMejor == EPot)
     Aprox = "Potencial";
-elseif (ElMejor = EExp)
+elseif (ElMejor == EExp)
     Aprox = "Exponencial";
-elseif (ElMejor = EHyp)
+elseif (ElMejor == EHyp)
     Aprox = "Hyperbola";
 endif
 
-printf("\n\nLa mejor aproximacion es por:\n\n");
+
+%printf("\n\nLa mejor aproximacion es por:\n\n");
+printf("\nLa mejor aproximacion es por:\n")
 Aprox
+
+%pause (5);
+%enter = input ("Presione Enter para finalizar", "s");
+%while (enter != 0)
+%enter = input ("Presione Enter para finalizar", "s");
+%endwhile
 printf("\n\nPrograma finalizado\n\n");
